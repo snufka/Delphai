@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import tableStyle from './style/tableStyle.css'
+
 
 class Table extends Component {
     constructor(props) {
