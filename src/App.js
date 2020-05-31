@@ -6,7 +6,7 @@ import Table from './Table'
 function App() {
     return (
         <div className="App">
-            <h1>Hello world</h1>
+            <h1>Funding by Industry Analytics</h1>
             <div>
                 <Selector />
                 <Graph />
