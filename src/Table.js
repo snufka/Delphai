@@ -55,6 +55,7 @@ class Table extends Component {
         return this.state.students.map((student, index) => {
             const { id, category, location, fundingAmount, announcedDate } = student //destructuring
             return (
+
                 <tr key={id}>
                     <td>{id}</td>
                     <td>{category}</td>
@@ -62,6 +63,7 @@ class Table extends Component {
                     <td>{fundingAmount}</td>
                     <td>{announcedDate}</td>
                 </tr>
+
             )
         })
     }
@@ -76,7 +78,7 @@ class Table extends Component {
         return (
             <div>
                 <h1 id='title'>My Table</h1>
-                <table id='students'>
+                <table class="table">
                     <tbody>
                         <tr>{this.renderTableHeader()}</tr>
                         {this.renderTableData()}

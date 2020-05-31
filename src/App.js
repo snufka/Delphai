@@ -2,6 +2,7 @@ import React from 'react';
 import Selector from './Selector'
 import Graph from './Graph'
 import Table from './Table'
+import appStyle from './style/appStyle.css'
 
 function App() {
     return (
