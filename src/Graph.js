@@ -80,11 +80,11 @@ export default function Graph() {
 
     }
     const options = {
-        onClick: (e, element) => {
-
-            alert(chartData.datasets.label);
-
-        },
+        /*  onClick: (e) => {
+  
+              alert('hello');
+  
+          },*/
         scales: {
             yAxes: [{
                 ticks: {
@@ -97,6 +97,7 @@ export default function Graph() {
                 }
             }]
         }
+
     }
     useEffect(() => {
         chart()
@@ -106,7 +107,9 @@ export default function Graph() {
         <div>
             <h2 className="display-4">Bubble Chart</h2>
             <div>
-                <Bubble data={chartData} options={options} />
+                <Bubble data={chartData}
+                    options={options}
+                    onElementsClick={dataset => console.log(dataset)} />
             </div>
         </div>
     )

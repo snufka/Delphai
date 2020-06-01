@@ -5,7 +5,7 @@ class Table extends Component {
     constructor(props) {
         super(props) //since we are extending class Table so we have to use super in order to override Component class constructor
         this.state = { //state is by default an object
-            students: [
+            tableData: [
                 {
                     id: 101,
                     category: "Beauty",
@@ -52,8 +52,8 @@ class Table extends Component {
         }
     }
     renderTableData() {
-        return this.state.students.map((student, index) => {
-            const { id, category, location, fundingAmount, announcedDate } = student //destructuring
+        return this.state.tableData.map((tableinfo, index) => {
+            const { id, category, location, fundingAmount, announcedDate } = tableinfo//destructuring
             return (
 
                 <tr key={id}>
@@ -68,7 +68,7 @@ class Table extends Component {
         })
     }
     renderTableHeader() {
-        let header = Object.keys(this.state.students[0])
+        let header = Object.keys(this.state.tableData[0])
         return header.map((key, index) => {
             return <th key={index}>{key.toUpperCase()}</th>
         })
@@ -78,7 +78,7 @@ class Table extends Component {
         return (
             <div>
                 <h1 className="display-4">Funding Rounds Details by Category</h1>
-                <table className="table">
+                <table className="table table-bordered">
                     <tbody>
                         <tr>{this.renderTableHeader()}</tr>
                         {this.renderTableData()}
