@@ -77,8 +77,8 @@ class Table extends Component {
     render() {
         return (
             <div>
-                <h1 id='title'>My Table</h1>
-                <table class="table">
+                <h1 className="display-4">Funding Rounds Details by Category</h1>
+                <table className="table">
                     <tbody>
                         <tr>{this.renderTableHeader()}</tr>
                         {this.renderTableData()}

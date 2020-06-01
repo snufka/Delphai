@@ -161,3 +161,5 @@ const API = [
         announcedDate: "May 13, 2018"
     }
 ]
+
+//const fundingRounds=API.filter(word => word.length > 6);

@@ -1,4 +1,9 @@
-.App {
-    width: 70%;
-    padding: 50px;
+body {
+    width: 90%;
+}
+
+h1, h2 {
+    text-align: center;
+    padding-top: 50px;
+    padding-bottom: 30px;
 }
