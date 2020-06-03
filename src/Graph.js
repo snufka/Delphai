@@ -5,6 +5,15 @@ import { Bubble } from 'react-chartjs-2';
 
 export default function Graph() {
     const [chartData, setChartData] = useState({});
+    // const [selectedLabel, setSelectedLabel] = useState({})
+
+
+    useEffect(() => {
+        chart()
+    }, [])
+
+
+
     const chart = () => {
         const labels = ['Beauty', 'Health', 'Games', 'Tools', 'Automative'];
 
@@ -21,7 +30,7 @@ export default function Graph() {
                         }
                     ],
                     backgroundColor: "#ff6384",
-                    hoverBackgroundColor: "#ff6384"
+                    hoverBackgroundColor: "#ff6399"
                 },
                 {
                     label: 'Health',
@@ -80,11 +89,7 @@ export default function Graph() {
 
     }
     const options = {
-        /*  onClick: (e) => {
-  
-              alert('hello');
-  
-          },*/
+
         scales: {
             yAxes: [{
                 ticks: {
@@ -99,9 +104,6 @@ export default function Graph() {
         }
 
     }
-    useEffect(() => {
-        chart()
-    }, [])
 
     return (
         <div>
@@ -109,7 +111,10 @@ export default function Graph() {
             <div>
                 <Bubble data={chartData}
                     options={options}
-                    onElementsClick={dataset => console.log(dataset)} />
+                // onElementsClick={alert('hello')}
+                //onElementsClick={elems => {  console.log(elems[0]._datasetIndex + ', ' + elems[0]._index); }}
+
+                />
             </div>
         </div>
     )
