@@ -1,8 +1,44 @@
 import React, { Component } from 'react'
-import API from './API'
+import axios from 'axios';
 
+let beauty = [];
+let health = [];
+let games = [];
+let tools = [];
+let automative = [];
+axios.get("http://demo0377384.mockable.io/funding-test")
+    .then(res => {
+        //console.log(res.data);
+        for (const dataObj of res.data) {
+            // empSal.push(dataObj.fundingAmount)
+            // empAge.push(dataObj.category)
+            if (dataObj.category === 'Beauty') {
+                beauty.push(dataObj.fundingAmount)
+            } if (dataObj.category === 'Health') {
+                health.push(dataObj.fundingAmount)
+            } if (dataObj.category === 'Games') {
+                games.push(dataObj.fundingAmount)
+            } if (dataObj.category === 'Tools') {
+                tools.push(dataObj.fundingAmount)
+            } if (dataObj.category === 'Automative') {
+                automative.push(dataObj.fundingAmount)
+            }
+        }
+
+
+
+
+
+
+    })
+    .catch(err => { console.log(err) })
+//console.log(beauty, health, games, tools, automative)
 
 class Table extends Component {
+
+
+
+
     constructor(props) {
         super(props) //since we are extending class Table so we have to use super in order to override Component class constructor
         this.state = { //state is by default an object

@@ -1,28 +1,57 @@
 import React, { useState, useEffect } from 'react'
 import { Bubble } from 'react-chartjs-2';
-import API from './API'
-
-/*function checkBeauty() {
-
-    return API.category === 'Beauty'
-}
-
-const categoryBeauty = API.filter(checkBeauty);*/
-console.log(API);
+//import API from './API'
+import axios from 'axios';
 
 
 export default function Graph() {
     const [chartData, setChartData] = useState({});
-    // const [selectedLabel, setSelectedLabel] = useState({})
+    //  const [employeeSalary, setEmployeeSalary] = useState({});
+    //const [employeeAge, setEmployeeAge] = useState({});
 
 
-    useEffect(() => {
-        chart()
-    }, [])
+
 
 
 
     const chart = () => {
+
+        let beauty = [];
+        let health = [];
+        let games = [];
+        let tools = [];
+        let automative = [];
+
+        axios.get("http://demo0377384.mockable.io/funding-test")
+            .then(res => {
+                //console.log(res.data);
+                for (const dataObj of res.data) {
+                    // empSal.push(dataObj.fundingAmount)
+                    // empAge.push(dataObj.category)
+                    if (dataObj.category === 'Beauty') {
+                        beauty.push(dataObj.fundingAmount)
+                    } if (dataObj.category === 'Health') {
+                        health.push(dataObj.fundingAmount)
+                    } if (dataObj.category === 'Games') {
+                        games.push(dataObj.fundingAmount)
+                    } if (dataObj.category === 'Tools') {
+                        tools.push(dataObj.fundingAmount)
+                    } if (dataObj.category === 'Automative') {
+                        automative.push(dataObj.fundingAmount)
+                    }
+                }
+
+
+
+
+
+
+            })
+            .catch(err => { console.log(err) })
+        console.log(beauty, health, games, tools, automative)
+
+
+
         const labels = ['Beauty', 'Health', 'Games', 'Tools', 'Automative'];
 
         setChartData({
@@ -96,6 +125,8 @@ export default function Graph() {
 
 
     }
+
+
     const options = {
         events: ['click'],
         title: {
@@ -116,6 +147,9 @@ export default function Graph() {
         }
 
     }
+    useEffect(() => {
+        chart()
+    }, [])
 
     return (
         <div>
