@@ -1,38 +1,52 @@
 import React, { Component } from 'react'
 import axios from 'axios';
 
-let beauty = [];
-let health = [];
-let games = [];
-let tools = [];
-let automative = [];
+let id = [];
+let location = [];
+let category = [];
+let fundingAmount = [];
+let announcedDate = [];
+
+let beautyData = [];
+let healthData = [];
+let gamesData = [];
+let toolsData = [];
+let automativeData = [];
 axios.get("http://demo0377384.mockable.io/funding-test")
     .then(res => {
         //console.log(res.data);
         for (const dataObj of res.data) {
-            // empSal.push(dataObj.fundingAmount)
-            // empAge.push(dataObj.category)
+
+            fundingAmount.push(dataObj.fundingAmount);
+
+            category.push(dataObj.category);
+
+            id.push(dataObj.id);
+
+            announcedDate.push(dataObj.announcedDate);
+
+            location.push(dataObj.location);
+
             if (dataObj.category === 'Beauty') {
-                beauty.push(dataObj.fundingAmount)
-            } if (dataObj.category === 'Health') {
-                health.push(dataObj.fundingAmount)
-            } if (dataObj.category === 'Games') {
-                games.push(dataObj.fundingAmount)
-            } if (dataObj.category === 'Tools') {
-                tools.push(dataObj.fundingAmount)
-            } if (dataObj.category === 'Automative') {
-                automative.push(dataObj.fundingAmount)
+                beautyData.push(dataObj)
+            }
+            if (dataObj.category === 'Health') {
+                healthData.push(dataObj)
+            }
+            if (dataObj.category === 'Games') {
+                gamesData.push(dataObj)
+            }
+            if (dataObj.category === 'Tools') {
+                toolsData.push(dataObj)
+            }
+            if (dataObj.category === 'Automative') {
+                automativeData.push(dataObj)
             }
         }
 
-
-
-
-
-
     })
     .catch(err => { console.log(err) })
-//console.log(beauty, health, games, tools, automative)
+console.log(beautyData)
 
 class Table extends Component {
 
