@@ -161,5 +161,8 @@ const API = [
         announcedDate: "May 13, 2018"
     }
 ]
+export default API;
 
 //const fundingRounds=API.filter(word => word.length > 6);
+
+//const categoryBeauty = API.filter(category => API.category === 'Beauty');

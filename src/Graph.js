@@ -1,6 +1,14 @@
 import React, { useState, useEffect } from 'react'
 import { Bubble } from 'react-chartjs-2';
+import API from './API'
 
+/*function checkBeauty() {
+
+    return API.category === 'Beauty'
+}
+
+const categoryBeauty = API.filter(checkBeauty);*/
+console.log(API);
 
 
 export default function Graph() {
@@ -29,8 +37,8 @@ export default function Graph() {
                             r: 90
                         }
                     ],
-                    backgroundColor: "#ff6384",
-                    hoverBackgroundColor: "#ff6399"
+                    backgroundColor: 'rgba(255, 99, 132, 0.2)',
+                    hoverBackgroundColor: 'rgba(255, 99, 132, 1)'
                 },
                 {
                     label: 'Health',
@@ -41,8 +49,8 @@ export default function Graph() {
                             r: 40
                         }
                     ],
-                    backgroundColor: "blue",
-                    hoverBackgroundColor: "blue"
+                    backgroundColor: 'rgba(54, 162, 235, 0.2)',
+                    hoverBackgroundColor: 'rgba(54, 162, 235, 1)'
                 },
                 {
                     label: 'Games',
@@ -53,8 +61,8 @@ export default function Graph() {
                             r: 50
                         }
                     ],
-                    backgroundColor: "green",
-                    hoverBackgroundColor: "green"
+                    backgroundColor: 'rgba(255, 206, 86, 0.2)',
+                    hoverBackgroundColor: 'rgba(255, 206, 86, 1)'
                 },
                 {
                     label: 'Tools',
@@ -65,8 +73,8 @@ export default function Graph() {
                             r: 20
                         }
                     ],
-                    backgroundColor: "red",
-                    hoverBackgroundColor: "red"
+                    backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                    hoverBackgroundColor: 'rgba(75, 192, 192, 1)'
                 },
                 {
                     label: 'Automative',
@@ -77,8 +85,8 @@ export default function Graph() {
                             r: 70
                         }
                     ],
-                    backgroundColor: "black",
-                    hoverBackgroundColor: "black"
+                    backgroundColor: 'rgba(153, 102, 255, 0.2)',
+                    hoverBackgroundColor: 'rgba(255, 159, 64, 1)'
                 }
 
             ]
@@ -89,7 +97,11 @@ export default function Graph() {
 
     }
     const options = {
-
+        events: ['click'],
+        title: {
+            display: true,
+            text: 'Number of Funding Round per Category'
+        },
         scales: {
             yAxes: [{
                 ticks: {
@@ -112,7 +124,7 @@ export default function Graph() {
                 <Bubble data={chartData}
                     options={options}
                 // onElementsClick={alert('hello')}
-                //onElementsClick={elems => {  console.log(elems[0]._datasetIndex + ', ' + elems[0]._index); }}
+                // onElementsClick={event => { console.log(event.target.value); }}
 
                 />
             </div>
