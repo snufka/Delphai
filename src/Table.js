@@ -46,7 +46,7 @@ axios.get("http://demo0377384.mockable.io/funding-test")
 
     })
     .catch(err => { console.log(err) })
-console.log(beautyData)
+console.log(beautyData, id)
 
 class Table extends Component {
 
