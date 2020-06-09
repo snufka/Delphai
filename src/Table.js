@@ -12,6 +12,7 @@ let healthData = [];
 let gamesData = [];
 let toolsData = [];
 let automativeData = [];
+
 axios.get("http://demo0377384.mockable.io/funding-test")
     .then(res => {
         //console.log(res.data);

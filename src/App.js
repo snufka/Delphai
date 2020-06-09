@@ -2,6 +2,7 @@ import React from 'react';
 import Selector from './Selector'
 import Graph from './Graph'
 import Table from './Table'
+//import ApiTable from './ApiTable'
 import appStyle from './style/appStyle.css'
 
 function App() {
@@ -13,6 +14,7 @@ function App() {
                     <Selector />
                     <Graph />
                     <Table />
+
                 </div>
             </div>
         </div>

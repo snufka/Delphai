@@ -12,45 +12,7 @@ export default function Graph() {
 
 
 
-
-
     const chart = () => {
-
-        let beauty = [];
-        let health = [];
-        let games = [];
-        let tools = [];
-        let automative = [];
-
-        axios.get("http://demo0377384.mockable.io/funding-test")
-            .then(res => {
-                //console.log(res.data);
-                for (const dataObj of res.data) {
-                    // empSal.push(dataObj.fundingAmount)
-                    // empAge.push(dataObj.category)
-                    if (dataObj.category === 'Beauty') {
-                        beauty.push(dataObj.fundingAmount)
-                    } if (dataObj.category === 'Health') {
-                        health.push(dataObj.fundingAmount)
-                    } if (dataObj.category === 'Games') {
-                        games.push(dataObj.fundingAmount)
-                    } if (dataObj.category === 'Tools') {
-                        tools.push(dataObj.fundingAmount)
-                    } if (dataObj.category === 'Automative') {
-                        automative.push(dataObj.fundingAmount)
-                    }
-                }
-
-
-
-
-
-
-            })
-            .catch(err => { console.log(err) })
-        console.log(beauty, health, games, tools, automative)
-
-
 
         const labels = ['Beauty', 'Health', 'Games', 'Tools', 'Automative'];
 
@@ -58,7 +20,7 @@ export default function Graph() {
             labels: labels,
             datasets: [
                 {
-                    label: 'Beauty',
+                    label: 'categories[0]',
                     data: [
                         {
                             x: 1,
@@ -147,9 +109,40 @@ export default function Graph() {
         }
 
     }
+
     useEffect(() => {
-        chart()
-    }, [])
+        let categories = [];
+        let beauty = [];
+        let health = [];
+        let games = [];
+        let tools = [];
+        let automative = [];
+
+        axios.get("http://demo0377384.mockable.io/funding-test")
+            .then(res => {
+                //console.log(res.data);
+                for (const dataObj of res.data) {
+                    // empSal.push(dataObj.fundingAmount)
+                    categories.push(dataObj.category)
+                    if (dataObj.category === 'Beauty') {
+                        beauty.push(dataObj.fundingAmount)
+                    } if (dataObj.category === 'Health') {
+                        health.push(dataObj.fundingAmount)
+                    } if (dataObj.category === 'Games') {
+                        games.push(dataObj.fundingAmount)
+                    } if (dataObj.category === 'Tools') {
+                        tools.push(dataObj.fundingAmount)
+                    } if (dataObj.category === 'Automative') {
+                        automative.push(dataObj.fundingAmount)
+                    }
+                }
+
+            })
+            .catch(err => { console.log(err) })
+        console.log(beauty, health, games, tools, automative)
+        chart();
+
+    }, []);
 
     return (
         <div>
