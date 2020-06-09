@@ -16,74 +16,111 @@ export default function Graph() {
 
         const labels = ['Beauty', 'Health', 'Games', 'Tools', 'Automative'];
 
-        setChartData({
-            labels: labels,
-            datasets: [
-                {
-                    label: 'categories[0]',
-                    data: [
-                        {
-                            x: 1,
-                            y: 7,
-                            r: 90
-                        }
-                    ],
-                    backgroundColor: 'rgba(255, 99, 132, 0.2)',
-                    hoverBackgroundColor: 'rgba(255, 99, 132, 1)'
-                },
-                {
-                    label: 'Health',
-                    data: [
-                        {
-                            x: 3,
-                            y: 3,
-                            r: 40
-                        }
-                    ],
-                    backgroundColor: 'rgba(54, 162, 235, 0.2)',
-                    hoverBackgroundColor: 'rgba(54, 162, 235, 1)'
-                },
-                {
-                    label: 'Games',
-                    data: [
-                        {
-                            x: 5,
-                            y: 6,
-                            r: 50
-                        }
-                    ],
-                    backgroundColor: 'rgba(255, 206, 86, 0.2)',
-                    hoverBackgroundColor: 'rgba(255, 206, 86, 1)'
-                },
-                {
-                    label: 'Tools',
-                    data: [
-                        {
-                            x: 7,
-                            y: 4,
-                            r: 20
-                        }
-                    ],
-                    backgroundColor: 'rgba(75, 192, 192, 0.2)',
-                    hoverBackgroundColor: 'rgba(75, 192, 192, 1)'
-                },
-                {
-                    label: 'Automative',
-                    data: [
-                        {
-                            x: 9,
-                            y: 2,
-                            r: 70
-                        }
-                    ],
-                    backgroundColor: 'rgba(153, 102, 255, 0.2)',
-                    hoverBackgroundColor: 'rgba(255, 159, 64, 1)'
-                }
 
-            ]
+        let beautyData = [];
+        let healthData = [];
+        let gamesData = [];
+        let toolsData = [];
+        let automativeData = [];
 
-        })
+        const waitingforData = async () => {
+            axios.get("http://demo0377384.mockable.io/funding-test")
+                .then(res => {
+                    //console.log(res.data);
+                    for (const dataObj of res.data) {
 
+
+
+                        if (dataObj.category === 'Beauty') {
+                            beautyData.push(dataObj)
+                        }
+                        if (dataObj.category === 'Health') {
+                            healthData.push(dataObj)
+                        }
+                        if (dataObj.category === 'Games') {
+                            gamesData.push(dataObj)
+                        }
+                        if (dataObj.category === 'Tools') {
+                            toolsData.push(dataObj)
+                        }
+                        if (dataObj.category === 'Automative') {
+                            automativeData.push(dataObj)
+                        }
+                    }
+                    setChartData({
+                        labels: labels,
+                        datasets: [
+                            {
+                                label: 'Beauty',
+                                data: [
+                                    {
+                                        x: 1,
+                                        y: beautyData.length,
+                                        r: 90
+                                    }
+                                ],
+                                backgroundColor: 'rgba(255, 99, 132, 0.2)',
+                                hoverBackgroundColor: 'rgba(255, 99, 132, 1)'
+                            },
+                            {
+                                label: 'Health',
+                                data: [
+                                    {
+                                        x: 3,
+                                        y: healthData.length,
+                                        r: 40
+                                    }
+                                ],
+                                backgroundColor: 'rgba(54, 162, 235, 0.2)',
+                                hoverBackgroundColor: 'rgba(54, 162, 235, 1)'
+                            },
+                            {
+                                label: 'Games',
+                                data: [
+                                    {
+                                        x: 5,
+                                        y: gamesData.length,
+                                        r: 50
+                                    }
+                                ],
+                                backgroundColor: 'rgba(255, 206, 86, 0.2)',
+                                hoverBackgroundColor: 'rgba(255, 206, 86, 1)'
+                            },
+                            {
+                                label: 'Tools',
+                                data: [
+                                    {
+                                        x: 7,
+                                        y: toolsData.length,
+                                        r: 20
+                                    }
+                                ],
+                                backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                                hoverBackgroundColor: 'rgba(75, 192, 192, 1)'
+                            },
+                            {
+                                label: 'Automative',
+                                data: [
+                                    {
+                                        x: 9,
+                                        y: 2,
+                                        r: 70
+                                    }
+                                ],
+                                backgroundColor: 'rgba(153, 102, 255, 0.2)',
+                                hoverBackgroundColor: 'rgba(255, 159, 64, 1)'
+                            }
+
+                        ]
+
+                    })
+
+                })
+
+                .catch(err => { console.log(err) })
+        }
+
+        waitingforData();
 
 
     }

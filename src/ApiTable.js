@@ -8,7 +8,6 @@ export default function ApiTable() {
     const fetchData = async () => {
         const result = await axios.get('http://demo0377384.mockable.io/funding-test');
         console.log(result.data)
-
         setTableData(result.data);
 
     };
