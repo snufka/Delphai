@@ -1,8 +1,8 @@
 import React from 'react';
 import Selector from './Selector'
 import Graph from './Graph'
-import Table from './Table'
-//import ApiTable from './ApiTable'
+//import Table from './Table'
+import ApiTable from './ApiTable'
 import appStyle from './style/appStyle.css'
 
 function App() {
@@ -13,8 +13,7 @@ function App() {
                 <div>
                     <Selector />
                     <Graph />
-                    <Table />
-
+                    <ApiTable />
                 </div>
             </div>
         </div>
