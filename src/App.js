@@ -4,6 +4,7 @@ import Graph from './Graph'
 //import Table from './Table'
 import ApiTable from './ApiTable'
 import appStyle from './style/appStyle.css'
+import FundingAmount from './FunddingAmount'
 
 function App() {
     return (
@@ -13,6 +14,7 @@ function App() {
                 <div>
                     <Selector />
                     <Graph />
+                    <FundingAmount />
                     <ApiTable />
                 </div>
             </div>
