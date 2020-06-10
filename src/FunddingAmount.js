@@ -5,8 +5,6 @@ import axios from "axios";
 
 export default function FunddingAmount() {
   const [chartData, setChartData] = useState({});
-  //  const [employeeSalary, setEmployeeSalary] = useState({});
-  //const [employeeAge, setEmployeeAge] = useState({});
 
   const chart = () => {
     const labels = ["Beauty", "Health", "Games", "Tools", "Automative"];
@@ -188,8 +186,7 @@ export default function FunddingAmount() {
         <Bubble
           data={chartData}
           options={options}
-          // onElementsClick={alert('hello')}
-          // onElementsClick={event => { console.log(event.target.value); }}
+          getElementAtEvent={(elems) => console.log(elems[0]._datasetIndex)}
         />
       </div>
     </div>
