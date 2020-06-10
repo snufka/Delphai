@@ -18,7 +18,7 @@ export default function Graph() {
       axios
         .get("http://demo0377384.mockable.io/funding-test")
         .then((res) => {
-          //console.log(res.data);
+          console.log(res.data);
           for (const dataObj of res.data) {
             if (dataObj.category === "Beauty") {
               beautyData.push(dataObj);
@@ -148,8 +148,11 @@ export default function Graph() {
         <Bubble
           data={chartData}
           options={options}
-          //not working
-          getElementAtEvent={(elems) => console.log(elems[0]._datasetIndex)}
+          getElementAtEvent={(elems) =>
+            elems[0]._datasetIndex !== "undefined"
+              ? console.log(elems[0]._datasetIndex)
+              : console.log("Didnt Clicked a bubble")
+          }
         />
       </div>
     </div>
