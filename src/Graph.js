@@ -159,7 +159,6 @@ export default function Graph() {
             <div>
                 <Bubble data={chartData}
                     options={options}
-                // onElementsClick={alert('hello')}
                 // onElementsClick={event => { console.log(event.target.value); }}
 
                 />

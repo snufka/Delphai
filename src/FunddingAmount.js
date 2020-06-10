@@ -21,8 +21,7 @@ export default function FunddingAmount() {
         let gamesData = [];
         let toolsData = [];
         let automativeData = [];
-        const reducer = (accumulator, currentValue) => accumulator + currentValue;
-
+        //let reducer = (accumulator, currentValue) => accumulator + currentValue;
 
         const waitingforData = async () => {
             axios.get("http://demo0377384.mockable.io/funding-test")
@@ -31,7 +30,9 @@ export default function FunddingAmount() {
                     for (const dataObj of res.data) {
 
                         if (dataObj.category === 'Beauty') {
-                            beautyData.push(dataObj)
+                            //pushong isn't working nly takes first match
+                            beautyData.push(dataObj);
+
                         }
                         if (dataObj.category === 'Health') {
                             healthData.push(dataObj)
@@ -47,7 +48,7 @@ export default function FunddingAmount() {
                         }
 
                     }
-                    const bSum = beautyData.reduce(reducer);
+
                     setChartData({
                         labels: labels,
                         datasets: [
@@ -56,7 +57,7 @@ export default function FunddingAmount() {
                                 data: [
                                     {
                                         x: 1,
-                                        y: bSum,
+                                        y: beautyData.fundingAmount,
                                         r: 90
                                     }
                                 ],
@@ -68,7 +69,7 @@ export default function FunddingAmount() {
                                 data: [
                                     {
                                         x: 3,
-                                        y: healthData.reduce(reducer),
+                                        y: healthData.fundingAmount,
                                         r: 40
                                     }
                                 ],
@@ -80,7 +81,7 @@ export default function FunddingAmount() {
                                 data: [
                                     {
                                         x: 5,
-                                        y: gamesData.reduce(reducer),
+                                        y: gamesData.fundingAmount,
                                         r: 50
                                     }
                                 ],
@@ -92,7 +93,7 @@ export default function FunddingAmount() {
                                 data: [
                                     {
                                         x: 7,
-                                        y: toolsData.reduce(reducer),
+                                        y: toolsData.fundingAmount,
                                         r: 20
                                     }
                                 ],
@@ -104,7 +105,7 @@ export default function FunddingAmount() {
                                 data: [
                                     {
                                         x: 9,
-                                        y: automativeData.reduce(reducer),
+                                        y: automativeData.fundingAmounts,
                                         r: 70
                                     }
                                 ],
@@ -156,7 +157,6 @@ export default function FunddingAmount() {
 
     return (
         <div>
-            <h2 className="display-4">Bubble Chart</h2>
             <div>
                 <Bubble data={chartData}
                     options={options}
@@ -169,3 +169,4 @@ export default function FunddingAmount() {
     )
 
 }
+
