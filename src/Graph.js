@@ -1,13 +1,11 @@
 import React, { useState, useEffect } from 'react'
 import { Bubble } from 'react-chartjs-2';
-//import API from './API'
 import axios from 'axios';
 
 
 export default function Graph() {
     const [chartData, setChartData] = useState({});
-    //  const [employeeSalary, setEmployeeSalary] = useState({});
-    //const [employeeAge, setEmployeeAge] = useState({});
+
 
 
 
@@ -159,7 +157,8 @@ export default function Graph() {
             <div>
                 <Bubble data={chartData}
                     options={options}
-                // onElementsClick={event => { console.log(event.target.value); }}
+                    //not working
+                    onClick={event => console.log(event.target.value)}
 
                 />
             </div>
