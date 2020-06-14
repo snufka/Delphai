@@ -186,6 +186,7 @@ export default function FunddingAmount() {
         <Bubble
           data={chartData}
           options={options}
+          //app crashes when the user clicks outside the bubble
           getElementAtEvent={(elems) => console.log(elems[0]._datasetIndex)}
         />
       </div>
